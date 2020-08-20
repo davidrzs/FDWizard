@@ -1,5 +1,6 @@
 import {
   functionalDependency,
+  candidateKeys,
   closure,
   minimalBasis
 } from "../src/index";
@@ -187,5 +188,41 @@ test("Testing powerSet", () => {
   expect(ps).toContainEqual([]);
   expect(ps).toContainEqual(["A","C"]);
   expect(ps).toContainEqual(["A","B","C"]);
+
+});
+
+
+test("Testing candidate keys", () => {
+
+  let dependencies = [{
+      left: ["A"],
+      right: ["B","C"]
+    },
+    {
+      left: ["C"],
+      right: ["D","A"]
+    },
+    {
+      left: ["E"],
+      right: ["A","B","C"]
+    },
+    {
+      left: ["F"],
+      right: ["C","D"]
+    }, {
+      left: ["C","D"],
+      right: ["B","E","F"]
+    }
+  ];
+
+
+  let cK = candidateKeys(["A","B","C","D","E","F"],dependencies);
+  
+  console.log(cK);
+  
+  expect(cK.sort().join("") == [["A"],["C"],["E"],["F"]].join("")).toBeTruthy();
+
+ 
+
 
 });

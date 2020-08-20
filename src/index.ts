@@ -85,6 +85,42 @@ export function minimalBasis(deps: functionalDependency[]) : functionalDependenc
 }
 
 
+export function superKeys(attrs: string[],deps: functionalDependency[]) : (string[])[]{
+
+    let ps = powerSet(attrs);
+
+    // now check for each if their closure is all the attributes:
+
+    let ck : (string[])[] = []
+
+    for(let st of ps){
+        const stClosure = closure(st,deps);
+        if(contained(attrs,stClosure)){
+            ck.push(st);
+        }
+    }
+
+    return ck;
+
+}
+
+
+export function candidateKeys(attrs: string[],deps: functionalDependency[]) : (string[])[]{
+
+    const sK = superKeys(attrs,deps);
+
+    let minLength = Number.MAX_VALUE;
+
+    for(let key of sK){
+        if(key.length < minLength){
+            minLength = key.length;
+        }
+    }
+
+    return sK.filter((e) => e.length == minLength);
+
+}
+
 
 
 

@@ -43,7 +43,7 @@ export function removeSubset(total:string[], toRemove:string[]):string[]{
 export function powerSet(bag:string[]) : (string[])[]{
 
     let powerSet : (string[])[] = [];
-    const twoPow = 2**bag.length;
+    const twoPow = Math.pow(2,bag.length);
 
     for(let i =0; i < twoPow; i++){
         let tempSet :string[] = [];
@@ -51,8 +51,8 @@ export function powerSet(bag:string[]) : (string[])[]{
         let num = i.toString(2);
 
         // we need to add padding:
-        while(bag.length < num.length){
-            num = '0' + num;
+        while(num.length < bag.length){
+            num = ['0'] + num;
         }
 
         for(let k = 0; k < bag.length; k++){
