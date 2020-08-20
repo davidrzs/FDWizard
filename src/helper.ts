@@ -19,9 +19,8 @@ export function contained(subset: string[], wholeList: string[]){
 export function merge(set1: string[], set2: string[]) : string[]{
 
     let merged = set1.concat(set2);
-    let unique = merged.filter((item, pos) => merged.indexOf(item) === pos);
 
-    return unique;
+    return unique(merged);
 }
 
 export function sameArray(set1: string[], set2: string[]) : boolean{
@@ -29,4 +28,13 @@ export function sameArray(set1: string[], set2: string[]) : boolean{
         return true;
     }
     return false;
+}
+
+export function unique(bag:string[]):string[]{
+    return   bag.filter((item, pos) => bag.indexOf(item) === pos);
+}
+
+
+export function removeSubset(total:string[], toRemove:string[]):string[]{
+    return total.filter( ( el ) => !toRemove.includes( el ) );
 }
