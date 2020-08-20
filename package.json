@@ -1,0 +1,23 @@
+{
+  "name": "fdwizard",
+  "version": "1.0.0",
+  "description": "A typescript library that performs functional dependency manipulation",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run test && npm run build",
+    "test": "jest --coverage"
+  },
+  "author": "David Zollikofer <david@zollikofer.co>",
+  "license": "Proprietary",
+  "devDependencies": {
+    "@types/jest": "26.0.10",
+    "jest": "26.4.1",
+    "ts-jest": "26.2.0",
+    "typescript": "3.7.5"
+  }
+}
