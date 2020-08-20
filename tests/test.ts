@@ -6,6 +6,7 @@ import {
 
 import {
   sameArray,
+  powerSet,
   merge
 } from "../src/helper";
 
@@ -146,33 +147,45 @@ test("Testing minimalBasis2", () => {
 
   let mb1 = minimalBasis(dependencies);
   console.log(mb1);
-  /*
-  expect(mb1.length).toBe(2);
+  
+  expect(mb1.length).toBe(4);
 
   expect(mb1).toContainEqual({
-    "left": ["B"],
+    "left": ["A"],
     "right": ["C"]
   });
 
   expect(mb1).toContainEqual({
-    "left": ["B"],
+    "left": ["E"],
     "right": ["A"]
   });
 
-
-
-  let mb2 = minimalBasis(dependencies2);
-  console.log(mb2);
-  expect(mb2.length).toBe(2);
-
-  expect(mb2).toContainEqual({
-    "left": ["E"],
-    "right": ["G"]
+  expect(mb1).toContainEqual({
+    "left": ["F"],
+    "right": ["C","D"]
   });
 
-  expect(mb2).toContainEqual({
-    "left": ["G"],
-    "right": ["S"]
-  });*/
+  expect(mb1).toContainEqual({
+    "left": ["C"],
+    "right": ["B","E","F"]
+  });
+
+
+});
+
+
+test("Testing powerSet", () => {
+
+  let ps = powerSet(["A","B","C"]).map((e) => e.sort()).sort();
+
+
+  console.log(ps);
+
+  expect(ps.length).toEqual(8);
+
+  expect(ps).toContainEqual(["A"]);
+  expect(ps).toContainEqual([]);
+  expect(ps).toContainEqual(["A","C"]);
+  expect(ps).toContainEqual(["A","B","C"]);
 
 });

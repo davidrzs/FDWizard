@@ -1,4 +1,4 @@
-import {contained,merge,sameArray,unique,removeSubset} from './helper'
+import {powerSet, contained,merge,sameArray,unique,removeSubset} from './helper'
 
 export interface functionalDependency {
     left: string[];
@@ -82,8 +82,14 @@ export function minimalBasis(deps: functionalDependency[]) : functionalDependenc
 
     return deps;
 
-
 }
+
+
+
+
+
+
+
 
 
 

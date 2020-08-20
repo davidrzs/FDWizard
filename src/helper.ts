@@ -38,3 +38,31 @@ export function unique(bag:string[]):string[]{
 export function removeSubset(total:string[], toRemove:string[]):string[]{
     return total.filter( ( el ) => !toRemove.includes( el ) );
 }
+
+
+export function powerSet(bag:string[]) : (string[])[]{
+
+    let powerSet : (string[])[] = [];
+    const twoPow = 2**bag.length;
+
+    for(let i =0; i < twoPow; i++){
+        let tempSet :string[] = [];
+        // create binary representation
+        let num = i.toString(2);
+
+        // we need to add padding:
+        while(bag.length < num.length){
+            num = '0' + num;
+        }
+
+        for(let k = 0; k < bag.length; k++){
+            if(num[k] == "1"){
+                tempSet.push(bag[k]);
+            }
+        }
+
+        powerSet.push(tempSet);
+    }
+    return powerSet;
+
+}
