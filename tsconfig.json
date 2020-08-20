@@ -1,12 +1,11 @@
 {
     "compilerOptions": {
         "declaration": true,
-        "declarationDir": "./dist",
-        "module": "commonjs",
+        "module": "es2015",
         "noImplicitAny": true,
         "removeComments": true,
         "lib": ["ES2017", "ES6"],
-        "outDir": "./dist",
+        "outDir": "./dist/",
         "target": "ES5",
         "preserveConstEnums": true,
         "sourceMap": true,
